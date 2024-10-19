@@ -7,6 +7,7 @@ public class FabricPlatformHelper implements IPlatformHelper {
 
     @Override
     public String getPlatformName() {
+
         return "Fabric";
     }
 
@@ -20,5 +21,11 @@ public class FabricPlatformHelper implements IPlatformHelper {
     public boolean isDevelopmentEnvironment() {
 
         return FabricLoader.getInstance().isDevelopmentEnvironment();
+    }
+
+    @Override
+    public String getGameDirectory() {
+
+        return FabricLoader.getInstance().getGameDir().toString();
     }
 }

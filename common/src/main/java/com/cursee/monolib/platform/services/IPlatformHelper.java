@@ -33,4 +33,11 @@ public interface IPlatformHelper {
 
         return isDevelopmentEnvironment() ? "development" : "production";
     }
+
+    /**
+     * Gets the root folder for the platform instance.
+     *
+     * @return The folder of the instance.
+     */
+    String getGameDirectory();
 }
