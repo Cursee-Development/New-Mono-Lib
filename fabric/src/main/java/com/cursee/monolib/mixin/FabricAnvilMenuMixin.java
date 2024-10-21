@@ -1,7 +1,6 @@
 package com.cursee.monolib.mixin;
 
 import com.cursee.monolib.callback.AnvilEventsFabric;
-import com.natamus.collective.fabric.callbacks.CollectiveAnvilEvents;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.world.Container;
 import net.minecraft.world.entity.player.Inventory;
