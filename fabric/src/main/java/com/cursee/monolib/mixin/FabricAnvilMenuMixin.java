@@ -16,9 +16,6 @@ import oshi.util.tuples.Triplet;
 
 @Mixin(value = AnvilMenu.class, priority = 1001)
 public abstract class FabricAnvilMenuMixin extends ItemCombinerMenu {
-    public FabricAnvilMenuMixin(MenuType<?> menuType, int i, Inventory inventory, ContainerLevelAccess containerLevelAccess) {
-        super(menuType, i, inventory, containerLevelAccess);
-    }
 
     @Shadow private String itemName;
     @Shadow private int repairItemCountCost;
@@ -26,30 +23,28 @@ public abstract class FabricAnvilMenuMixin extends ItemCombinerMenu {
 
     @Inject(method = "createResult()V", at = @At(value= "RETURN"))
     public void onCreateAnvilResult(CallbackInfo info) {
-        AnvilMenu anvilmenu = (AnvilMenu)(Object)this;
-        Container inputslots = this.inputSlots;
 
-        ItemStack left = inputslots.getItem(0);
-        ItemStack right = inputslots.getItem(1);
-        ItemStack output = this.resultSlots.getItem(0);
+        AnvilMenu instance = (AnvilMenu) (Object) this;
+        Container injected$inputSlots = this.inputSlots;
 
-        int baseCost = left.getOrDefault(DataComponents.REPAIR_COST, 0) + (right.isEmpty() ? 0 : right.getOrDefault(DataComponents.REPAIR_COST, 0));
+        ItemStack injected$slotLeft = injected$inputSlots.getItem(0);
+        ItemStack injected$slotRight = injected$inputSlots.getItem(1);
+        ItemStack injected$slotOutputs = this.resultSlots.getItem(0);
 
-        Triplet<Integer, Integer, ItemStack> triple = AnvilEventsFabric.UPDATE.invoker().onUpdate(anvilmenu, left, right, output, itemName, baseCost, this.player);
-        if (triple == null) {
-            return;
-        }
+        int injected$baseCost = injected$slotLeft.getOrDefault(DataComponents.REPAIR_COST, 0) + (injected$slotRight.isEmpty() ? 0 : injected$slotRight.getOrDefault(DataComponents.REPAIR_COST, 0));
 
-        if (triple.getA() >= 0) {
-            cost.set(triple.getA());
-        }
+        Triplet<Integer, Integer, ItemStack> injected$triple = AnvilEventsFabric.UPDATE.invoker().onUpdate(instance, injected$slotLeft, injected$slotRight, injected$slotOutputs, itemName, injected$baseCost, this.player);
 
-        if (triple.getB() >= 0) {
-            repairItemCountCost = triple.getB();
-        }
+        if (injected$triple == null) return;
 
-        if (triple.getC() != null) {
-            this.resultSlots.setItem(0, triple.getC());
-        }
+        if (injected$triple.getA() >= 0) cost.set(injected$triple.getA());
+
+        if (injected$triple.getB() >= 0) repairItemCountCost = injected$triple.getB();
+
+        if (injected$triple.getC() != null) this.resultSlots.setItem(0, injected$triple.getC());
+    }
+
+    public FabricAnvilMenuMixin(MenuType<?> menuType, int i, Inventory inventory, ContainerLevelAccess containerLevelAccess) {
+        super(menuType, i, inventory, containerLevelAccess);
     }
 }
