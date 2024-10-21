@@ -95,7 +95,7 @@ public class Sailing {
                 Sailing.joinWorldProcess(level, player);
             }
         }
-        
+
         entity.addTag(checkedEntityTag);
 
         return true;
