@@ -204,7 +204,7 @@ public class Sailing {
             // checking against "monolib-merged-1.20-1.3.0.jar" which is always invalid.
             // mutate "-merged-" to "-fabric-", "-forge-", "-neoforge-"
 
-            if (!(installedModFilenames.contains(filename) || installedModFilenames.contains(filename.replace("-merged-", "-fabric-")) || installedModFilenames.contains(filename.replace("-merged-", "-forge-")) || installedModFilenames.contains(filename.replace("-merged-", "-neoforge-"))) && jarFilenameToNameMap.containsKey(filename)) {
+            if (!installedModFilenames.isEmpty() && !(installedModFilenames.contains(filename) || installedModFilenames.contains(filename.replace("-merged-", "-fabric-")) || installedModFilenames.contains(filename.replace("-merged-", "-forge-")) || installedModFilenames.contains(filename.replace("-merged-", "-neoforge-"))) && jarFilenameToNameMap.containsKey(filename)) {
                 failedToVerify.add(jarFilenameToNameMap.get(filename));
             }
         }
@@ -230,6 +230,8 @@ public class Sailing {
         File[] installedFilesArray = modDirectory.listFiles();
         File versionFolder = new File(Sailing.getModDirectory() + File.separator + getCurrentMinecraftVersion());
         File[] installedVersionsArray = versionFolder.listFiles();
+
+        if (installedFilesArray == null || installedVersionsArray == null) return new ArrayList<String>();
 
         for (File file : ArrayUtils.addAll(installedFilesArray, installedVersionsArray)) {
             if (file.isFile()) {
