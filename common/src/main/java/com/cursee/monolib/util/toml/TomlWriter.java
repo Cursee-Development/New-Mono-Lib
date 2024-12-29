@@ -1,5 +1,10 @@
 package com.cursee.monolib.util.toml;
 
+import com.cursee.monolib.util.toml.important.DatePolicy;
+import com.cursee.monolib.util.toml.important.IndentationPolicy;
+import com.cursee.monolib.util.toml.important.ValueWriter;
+import com.cursee.monolib.util.toml.important.WriterContext;
+
 import java.io.*;
 import java.util.List;
 import java.util.Map;
@@ -7,7 +12,7 @@ import java.util.TimeZone;
 
 import static com.cursee.monolib.util.toml.MapValueWriter.MAP_VALUE_WRITER;
 import static com.cursee.monolib.util.toml.ObjectValueWriter.OBJECT_VALUE_WRITER;
-import static com.cursee.monolib.util.toml.ValueWriters.WRITERS;
+import static com.cursee.monolib.util.toml.important.ValueWriters.WRITERS;
 
 /**
  * <p>Converts Objects to TOML</p>

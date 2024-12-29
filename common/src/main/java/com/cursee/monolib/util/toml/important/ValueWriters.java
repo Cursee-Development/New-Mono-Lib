@@ -1,4 +1,6 @@
-package com.cursee.monolib.util.toml;
+package com.cursee.monolib.util.toml.important;
+
+import com.cursee.monolib.util.toml.DateValueReaderWriter;
 
 import static com.cursee.monolib.util.toml.BooleanValueReaderWriter.BOOLEAN_VALUE_READER_WRITER;
 import static com.cursee.monolib.util.toml.DateValueReaderWriter.DATE_PARSER_JDK_6;
@@ -10,11 +12,11 @@ import static com.cursee.monolib.util.toml.PrimitiveArrayValueWriter.PRIMITIVE_A
 import static com.cursee.monolib.util.toml.StringValueReaderWriter.STRING_VALUE_READER_WRITER;
 import static com.cursee.monolib.util.toml.TableArrayValueWriter.TABLE_ARRAY_VALUE_WRITER;
 
-class ValueWriters {
+public class ValueWriters {
 
-  static final ValueWriters WRITERS = new ValueWriters();
+  public static final ValueWriters WRITERS = new ValueWriters();
 
-  ValueWriter findWriterFor(Object value) {
+  public ValueWriter findWriterFor(Object value) {
     for (ValueWriter valueWriter : VALUE_WRITERS) {
       if (valueWriter.canWrite(value)) {
         return valueWriter;

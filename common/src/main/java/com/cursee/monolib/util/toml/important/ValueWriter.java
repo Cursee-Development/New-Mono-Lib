@@ -1,6 +1,6 @@
-package com.cursee.monolib.util.toml;
+package com.cursee.monolib.util.toml.important;
 
-interface ValueWriter {
+public interface ValueWriter {
   boolean canWrite(Object value);
 
   void write(Object value, WriterContext context);

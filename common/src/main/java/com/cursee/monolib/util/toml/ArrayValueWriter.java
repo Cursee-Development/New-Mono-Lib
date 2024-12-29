@@ -1,11 +1,13 @@
 package com.cursee.monolib.util.toml;
 
 
+import com.cursee.monolib.util.toml.important.ValueWriter;
+
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Collection;
 
-import static com.cursee.monolib.util.toml.ValueWriters.WRITERS;
+import static com.cursee.monolib.util.toml.important.ValueWriters.WRITERS;
 
 abstract class ArrayValueWriter implements ValueWriter {
   static protected boolean isArrayish(Object value) {

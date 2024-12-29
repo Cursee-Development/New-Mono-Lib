@@ -1,10 +1,10 @@
-package com.cursee.monolib.util.toml;
+package com.cursee.monolib.util.toml.important;
 
 import java.io.IOException;
 import java.io.Writer;
 import java.util.Arrays;
 
-class WriterContext {
+public class WriterContext {
   private String arrayKey = null;
   private boolean isArrayOfTable = false;
   private boolean empty = true;
@@ -15,11 +15,11 @@ class WriterContext {
   private final IndentationPolicy indentationPolicy;
   private final DatePolicy datePolicy;
 
-  WriterContext(IndentationPolicy indentationPolicy, DatePolicy datePolicy, Writer output) {
+  public WriterContext(IndentationPolicy indentationPolicy, DatePolicy datePolicy, Writer output) {
     this("", "", output, indentationPolicy, datePolicy);
   }
 
-  WriterContext pushTable(String newKey) {
+  public WriterContext pushTable(String newKey) {
     String newIndent = "";
     if (!key.isEmpty()) {
       newIndent = growIndent(indentationPolicy);
@@ -35,7 +35,7 @@ class WriterContext {
     return subContext;
   }
 
-  WriterContext pushTableFromArray() {
+  public WriterContext pushTableFromArray() {
     WriterContext subContext = new WriterContext(key, currentTableIndent, output, indentationPolicy, datePolicy);
     if (!empty) {
       subContext.empty = false;
@@ -45,7 +45,7 @@ class WriterContext {
     return subContext;
   }
   
-  WriterContext write(String s) {
+  public WriterContext write(String s) {
     try {
       output.write(s);
       if (empty && !s.isEmpty()) {
@@ -58,13 +58,13 @@ class WriterContext {
     }
   }
 
-  void write(char[] chars) {
+  public void write(char[] chars) {
     for (char c : chars) {
       write(c);
     }
   }
   
-  WriterContext write(char c) {
+  public WriterContext write(char c) {
     try {
       output.write(c);
       empty = false;
@@ -75,7 +75,7 @@ class WriterContext {
     }
   }
 
-  void writeKey() {
+  public void writeKey() {
     if (key.isEmpty()) {
       return;
     }
@@ -93,33 +93,33 @@ class WriterContext {
     }
   }
 
-  void writeArrayDelimiterPadding() {
+  public void writeArrayDelimiterPadding() {
     for (int i = 0; i < indentationPolicy.getArrayDelimiterPadding(); i++) {
       write(' ');
     }
   }
 
-  void indent() {
+  public void indent() {
     if (!key.isEmpty()) {
       write(currentFieldIndent);
     }
   }
   
-  DatePolicy getDatePolicy() {
+  public DatePolicy getDatePolicy() {
     return datePolicy;
   }
 
-  WriterContext setIsArrayOfTable(boolean isArrayOfTable) {
+  public WriterContext setIsArrayOfTable(boolean isArrayOfTable) {
     this.isArrayOfTable = isArrayOfTable;
     return this;
   }
 
-  WriterContext setArrayKey(String arrayKey) {
+  public WriterContext setArrayKey(String arrayKey) {
     this.arrayKey = arrayKey;
     return this;
   }
 
-  String getContextPath() {
+  public String getContextPath() {
     return key.isEmpty() ? arrayKey : key + "." + arrayKey;
   }
 

@@ -1,15 +1,17 @@
-package com.cursee.monolib.util.toml;
+package com.cursee.monolib.util.toml.important;
 
-class Identifier {
+import com.cursee.monolib.util.toml.StringValueReaderWriter;
+
+public class Identifier {
   
-  static final Identifier INVALID = new Identifier("", null);
+  public static final Identifier INVALID = new Identifier("", null);
   
   private static final String ALLOWED_CHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890_-";
 
   private final String name;
   private final Type type;
   
-  static Identifier from(String name, Context context) {
+  public static Identifier from(String name, Context context) {
     Type type;
     boolean valid;
     name = name.trim();
@@ -36,11 +38,11 @@ class Identifier {
     this.type = type;
   }
   
-  String getName() {
+  public String getName() {
     return name;
   }
   
-  String getBareName() {
+  public String getBareName() {
     if (isKey()) {
       return name;
     }
@@ -52,15 +54,15 @@ class Identifier {
     return name.substring(2, name.length() - 2);
   }
   
-  boolean isKey() {
+  public boolean isKey() {
     return type == Type.KEY;
   }
   
-  boolean isTable() {
+  public boolean isTable() {
     return type == Type.TABLE;
   }
   
-  boolean isTableArray() {
+  public boolean isTableArray() {
     return type == Type.TABLE_ARRAY;
   }
   

@@ -1,8 +1,8 @@
-package com.cursee.monolib.util.toml;
+package com.cursee.monolib.util.toml.important;
 
 import java.util.concurrent.atomic.AtomicInteger;
 
-interface ValueReader {
+public interface ValueReader {
 
   /**
    * @param s must already have been trimmed

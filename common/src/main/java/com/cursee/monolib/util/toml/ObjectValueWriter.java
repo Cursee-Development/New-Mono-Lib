@@ -1,13 +1,17 @@
 package com.cursee.monolib.util.toml;
 
+import com.cursee.monolib.util.toml.important.ValueWriter;
+import com.cursee.monolib.util.toml.important.WriterContext;
+
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
 import java.util.*;
 
 import static com.cursee.monolib.util.toml.MapValueWriter.MAP_VALUE_WRITER;
 
-class ObjectValueWriter implements ValueWriter {
-  static final ValueWriter OBJECT_VALUE_WRITER = new ObjectValueWriter();
+public class ObjectValueWriter implements ValueWriter {
+
+  public static final ValueWriter OBJECT_VALUE_WRITER = new ObjectValueWriter();
 
   @Override
   public boolean canWrite(Object value) {

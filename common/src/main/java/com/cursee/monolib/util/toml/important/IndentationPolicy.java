@@ -1,30 +1,32 @@
-package com.cursee.monolib.util.toml;
+package com.cursee.monolib.util.toml.important;
+
+import com.cursee.monolib.util.toml.TomlWriter;
 
 /**
  * Controls how a {@link TomlWriter} indents tables and key/value pairs.
  *
  * The default policy is to not indent.
  */
-class IndentationPolicy {
+public class IndentationPolicy {
   private final int tableIndent;
   private final int keyValueIndent;
   private final int arrayDelimiterPadding;
 
-  IndentationPolicy(int keyIndentation, int tableIndentation, int arrayDelimiterPadding) {
+  public IndentationPolicy(int keyIndentation, int tableIndentation, int arrayDelimiterPadding) {
     this.keyValueIndent = keyIndentation;
     this.tableIndent = tableIndentation;
     this.arrayDelimiterPadding = arrayDelimiterPadding;
   }
 
-  int getTableIndent() {
+  public int getTableIndent() {
     return tableIndent;
   }
 
-  int getKeyValueIndent() {
+  public int getKeyValueIndent() {
     return keyValueIndent;
   }
 
-  int getArrayDelimiterPadding() {
+  public int getArrayDelimiterPadding() {
     return arrayDelimiterPadding;
   }
 }

@@ -1,17 +1,19 @@
 package com.cursee.monolib.util.toml;
 
+import com.cursee.monolib.util.toml.important.*;
+
 import java.net.URI;
 import java.net.URL;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-class StringValueReaderWriter implements ValueReader, ValueWriter {
+public class StringValueReaderWriter implements ValueReader, ValueWriter {
   
-  static final StringValueReaderWriter STRING_VALUE_READER_WRITER = new StringValueReaderWriter();
+  public static final StringValueReaderWriter STRING_VALUE_READER_WRITER = new StringValueReaderWriter();
   private static final Pattern UNICODE_REGEX = Pattern.compile("\\\\[uU](.{4})");
 
-  static private final String[] specialCharacterEscapes = new String[93];
+  private static final String[] specialCharacterEscapes = new String[93];
 
   static {
     specialCharacterEscapes['\b'] = "\\b";
@@ -60,7 +62,7 @@ class StringValueReaderWriter implements ValueReader, ValueWriter {
     return s;
   }
 
-  String replaceUnicodeCharacters(String value) {
+  public String replaceUnicodeCharacters(String value) {
     Matcher unicodeMatcher = UNICODE_REGEX.matcher(value);
 
     while (unicodeMatcher.find()) {
@@ -69,7 +71,7 @@ class StringValueReaderWriter implements ValueReader, ValueWriter {
     return value;
   }
 
-  String replaceSpecialCharacters(String s) {
+  public String replaceSpecialCharacters(String s) {
     for (int i = 0; i < s.length() - 1; i++) {
       char ch = s.charAt(i);
       char next = s.charAt(i + 1);

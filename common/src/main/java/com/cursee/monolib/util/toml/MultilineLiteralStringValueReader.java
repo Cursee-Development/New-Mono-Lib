@@ -1,10 +1,14 @@
 package com.cursee.monolib.util.toml;
 
+import com.cursee.monolib.util.toml.important.Context;
+import com.cursee.monolib.util.toml.important.Results;
+import com.cursee.monolib.util.toml.important.ValueReader;
+
 import java.util.concurrent.atomic.AtomicInteger;
 
-class MultilineLiteralStringValueReader implements ValueReader {
+public class MultilineLiteralStringValueReader implements ValueReader {
   
-  static final MultilineLiteralStringValueReader MULTILINE_LITERAL_STRING_VALUE_READER = new MultilineLiteralStringValueReader(); 
+  public static final MultilineLiteralStringValueReader MULTILINE_LITERAL_STRING_VALUE_READER = new MultilineLiteralStringValueReader();
   
   @Override
   public boolean canRead(String s) {
