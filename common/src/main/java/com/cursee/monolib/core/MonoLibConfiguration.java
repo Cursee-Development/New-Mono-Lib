@@ -40,9 +40,6 @@ public class MonoLibConfiguration {
             try {
                 TomlWriter writer = new TomlWriter();
                 writer.write(defaults, new File(CONFIG_FILEPATH));
-
-                // SimpleConfig.write(Map<String, Object>, File);
-
             } catch (IOException exception) {
 
                 Constants.LOG.error("Error(s) occurred while attempting to write " + Constants.MOD_ID + ".toml");
@@ -59,9 +56,6 @@ public class MonoLibConfiguration {
 
             try {
                 Toml toml = new Toml().read(CONFIG_FILE);
-
-                // SimpleConfig config = SimpleConfig.read(File);
-
                 MonoLibConfiguration.debugging = toml.getBoolean("debugging");
                 MonoLibConfiguration.enableAntiRepostingCheck = toml.getBoolean("enableAntiRepostingCheck");
             }

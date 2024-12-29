@@ -1,16 +1,11 @@
 package com.cursee.monolib.util.toml;
 
-import com.cursee.monolib.util.toml.important.Context;
-import com.cursee.monolib.util.toml.important.ValueReader;
-import com.cursee.monolib.util.toml.important.ValueWriter;
-import com.cursee.monolib.util.toml.important.WriterContext;
-
 import java.util.concurrent.atomic.AtomicInteger;
 
 
-public class BooleanValueReaderWriter implements ValueReader, ValueWriter {
+class BooleanValueReaderWriter implements ValueReader, ValueWriter {
   
-  public static final BooleanValueReaderWriter BOOLEAN_VALUE_READER_WRITER = new BooleanValueReaderWriter();
+  static final BooleanValueReaderWriter BOOLEAN_VALUE_READER_WRITER = new BooleanValueReaderWriter(); 
 
   @Override
   public boolean canRead(String s) {

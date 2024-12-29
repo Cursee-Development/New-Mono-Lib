@@ -1,7 +1,5 @@
 package com.cursee.monolib.util.toml;
 
-import com.cursee.monolib.util.toml.important.*;
-
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -9,10 +7,10 @@ import java.util.concurrent.atomic.AtomicInteger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class DateValueReaderWriter implements ValueReader, ValueWriter {
+class DateValueReaderWriter implements ValueReader, ValueWriter {
 
-  public static final DateValueReaderWriter DATE_VALUE_READER_WRITER = new DateValueReaderWriter();
-  public static final DateValueReaderWriter DATE_PARSER_JDK_6 = new DateConverterJdk6();
+  static final DateValueReaderWriter DATE_VALUE_READER_WRITER = new DateValueReaderWriter();
+  static final DateValueReaderWriter DATE_PARSER_JDK_6 = new DateConverterJdk6();
   private static final Pattern DATE_REGEX = Pattern.compile("(\\d{4}-[0-1][0-9]-[0-3][0-9]T[0-2][0-9]:[0-5][0-9]:[0-5][0-9])(\\.\\d*)?(Z|(?:[+\\-]\\d{2}:\\d{2}))(.*)");
 
   @Override

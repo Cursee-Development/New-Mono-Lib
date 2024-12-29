@@ -1,15 +1,11 @@
 package com.cursee.monolib.util.toml;
 
-import com.cursee.monolib.util.toml.important.Context;
-import com.cursee.monolib.util.toml.important.Results;
-import com.cursee.monolib.util.toml.important.ValueReader;
-
 import java.util.concurrent.atomic.AtomicInteger;
 
 
-public class LiteralStringValueReader implements ValueReader {
+class LiteralStringValueReader implements ValueReader {
 
-  public static final LiteralStringValueReader LITERAL_STRING_VALUE_READER = new LiteralStringValueReader();
+  static final LiteralStringValueReader LITERAL_STRING_VALUE_READER = new LiteralStringValueReader();
   
   @Override
   public boolean canRead(String s) {

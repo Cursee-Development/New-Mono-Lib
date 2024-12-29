@@ -1,13 +1,8 @@
 package com.cursee.monolib.util.toml;
 
-import com.cursee.monolib.util.toml.important.Context;
-import com.cursee.monolib.util.toml.important.Identifier;
-import com.cursee.monolib.util.toml.important.Results;
-import com.cursee.monolib.util.toml.important.ValueReaders;
-
 import java.util.concurrent.atomic.AtomicInteger;
 
-import static com.cursee.monolib.util.toml.important.IdentifierConverter.IDENTIFIER_CONVERTER;
+import static com.cursee.monolib.util.toml.IdentifierConverter.IDENTIFIER_CONVERTER;
 
 class TomlParser {
 

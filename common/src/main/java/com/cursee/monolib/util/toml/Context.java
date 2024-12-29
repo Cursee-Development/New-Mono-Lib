@@ -1,11 +1,11 @@
-package com.cursee.monolib.util.toml.important;
+package com.cursee.monolib.util.toml;
 
 import java.util.concurrent.atomic.AtomicInteger;
 
-public class Context {
-  public final Identifier identifier;
-  public final AtomicInteger line;
-  public final Results.Errors errors;
+class Context {
+  final Identifier identifier;
+  final AtomicInteger line;
+  final Results.Errors errors;
   
   public Context(Identifier identifier, AtomicInteger line, Results.Errors errors) {
     this.identifier = identifier;

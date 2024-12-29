@@ -1,12 +1,9 @@
 package com.cursee.monolib.util.toml;
 
-import com.cursee.monolib.util.toml.important.*;
-
 import java.util.concurrent.atomic.AtomicInteger;
 
-public class NumberValueReaderWriter implements ValueReader, ValueWriter {
-
-  public static final NumberValueReaderWriter NUMBER_VALUE_READER_WRITER = new NumberValueReaderWriter();
+class NumberValueReaderWriter implements ValueReader, ValueWriter {
+  static final NumberValueReaderWriter NUMBER_VALUE_READER_WRITER = new NumberValueReaderWriter();
   
   @Override
   public boolean canRead(String s) {

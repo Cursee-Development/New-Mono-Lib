@@ -1,4 +1,4 @@
-package com.cursee.monolib.util.toml.important;
+package com.cursee.monolib.util.toml;
 
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -12,11 +12,11 @@ import static com.cursee.monolib.util.toml.MultilineStringValueReader.MULTILINE_
 import static com.cursee.monolib.util.toml.NumberValueReaderWriter.NUMBER_VALUE_READER_WRITER;
 import static com.cursee.monolib.util.toml.StringValueReaderWriter.STRING_VALUE_READER_WRITER;
 
-public class ValueReaders {
+class ValueReaders {
   
-  public static final ValueReaders VALUE_READERS = new ValueReaders();
+  static final ValueReaders VALUE_READERS = new ValueReaders();
   
-  public Object convert(String value, AtomicInteger index, Context context) {
+  Object convert(String value, AtomicInteger index, Context context) {
     String substring = value.substring(index.get());
     for (ValueReader valueParser : READERS) {
       if (valueParser.canRead(substring)) {

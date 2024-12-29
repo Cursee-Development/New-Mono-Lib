@@ -1,12 +1,12 @@
-package com.cursee.monolib.util.toml.important;
+package com.cursee.monolib.util.toml;
 
 import java.util.concurrent.atomic.AtomicInteger;
 
-public class IdentifierConverter {
+class IdentifierConverter {
   
-  public static final IdentifierConverter IDENTIFIER_CONVERTER = new IdentifierConverter();
+  static final IdentifierConverter IDENTIFIER_CONVERTER = new IdentifierConverter();
 
-  public Identifier convert(String s, AtomicInteger index, Context context) {
+  Identifier convert(String s, AtomicInteger index, Context context) {
     boolean quoted = false;
     StringBuilder name = new StringBuilder();
     boolean terminated = false;

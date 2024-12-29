@@ -1,15 +1,11 @@
 package com.cursee.monolib.util.toml;
 
-import com.cursee.monolib.util.toml.important.ValueWriter;
-import com.cursee.monolib.util.toml.important.WriterContext;
-
 import java.util.Collection;
 
-import static com.cursee.monolib.util.toml.important.ValueWriters.WRITERS;
+import static com.cursee.monolib.util.toml.ValueWriters.WRITERS;
 
-public class TableArrayValueWriter extends ArrayValueWriter {
-
-  public static final ValueWriter TABLE_ARRAY_VALUE_WRITER = new TableArrayValueWriter();
+class TableArrayValueWriter extends ArrayValueWriter {
+  static final ValueWriter TABLE_ARRAY_VALUE_WRITER = new TableArrayValueWriter();
 
   @Override
   public boolean canWrite(Object value) {

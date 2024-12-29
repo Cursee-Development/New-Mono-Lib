@@ -1,18 +1,13 @@
 package com.cursee.monolib.util.toml;
 
-import com.cursee.monolib.util.toml.important.Context;
-import com.cursee.monolib.util.toml.important.Identifier;
-import com.cursee.monolib.util.toml.important.Results;
-import com.cursee.monolib.util.toml.important.ValueReader;
-
 import java.util.HashMap;
 import java.util.concurrent.atomic.AtomicInteger;
 
-import static com.cursee.monolib.util.toml.important.ValueReaders.VALUE_READERS;
+import static com.cursee.monolib.util.toml.ValueReaders.VALUE_READERS;
 
-public class InlineTableValueReader implements ValueReader {
+class InlineTableValueReader implements ValueReader {
 
-  public static final InlineTableValueReader INLINE_TABLE_VALUE_READER = new InlineTableValueReader();
+  static final InlineTableValueReader INLINE_TABLE_VALUE_READER = new InlineTableValueReader();
   
   @Override
   public boolean canRead(String s) {

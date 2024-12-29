@@ -1,22 +1,22 @@
-package com.cursee.monolib.util.toml.important;
+package com.cursee.monolib.util.toml;
 
 import java.util.TimeZone;
 
-public class DatePolicy {
+class DatePolicy {
 
   private final TimeZone timeZone;
   private final boolean showFractionalSeconds;
   
-  public DatePolicy(TimeZone timeZone, boolean showFractionalSeconds) {
+  DatePolicy(TimeZone timeZone, boolean showFractionalSeconds) {
     this.timeZone = timeZone;
     this.showFractionalSeconds = showFractionalSeconds;
   }
 
-  public TimeZone getTimeZone() {
+  TimeZone getTimeZone() {
     return timeZone;
   }
 
-  public boolean isShowFractionalSeconds() {
+  boolean isShowFractionalSeconds() {
     return showFractionalSeconds;
   }
 }

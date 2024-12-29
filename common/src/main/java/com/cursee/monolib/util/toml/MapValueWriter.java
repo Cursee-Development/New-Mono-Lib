@@ -1,18 +1,15 @@
 package com.cursee.monolib.util.toml;
 
-import com.cursee.monolib.util.toml.important.ValueWriter;
-import com.cursee.monolib.util.toml.important.WriterContext;
-
 import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import static com.cursee.monolib.util.toml.PrimitiveArrayValueWriter.PRIMITIVE_ARRAY_VALUE_WRITER;
 import static com.cursee.monolib.util.toml.TableArrayValueWriter.TABLE_ARRAY_VALUE_WRITER;
-import static com.cursee.monolib.util.toml.important.ValueWriters.WRITERS;
+import static com.cursee.monolib.util.toml.ValueWriters.WRITERS;
 
-public class MapValueWriter implements ValueWriter {
-  public static final ValueWriter MAP_VALUE_WRITER = new MapValueWriter();
+class MapValueWriter implements ValueWriter {
+  static final ValueWriter MAP_VALUE_WRITER = new MapValueWriter();
 
   private static final Pattern REQUIRED_QUOTING_PATTERN = Pattern.compile("^.*[^A-Za-z\\d_-].*$");
 

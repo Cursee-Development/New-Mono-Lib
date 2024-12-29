@@ -1,18 +1,14 @@
 package com.cursee.monolib.util.toml;
 
-import com.cursee.monolib.util.toml.important.Context;
-import com.cursee.monolib.util.toml.important.Results;
-import com.cursee.monolib.util.toml.important.ValueReader;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 
-import static com.cursee.monolib.util.toml.important.ValueReaders.VALUE_READERS;
+import static com.cursee.monolib.util.toml.ValueReaders.VALUE_READERS;
 
-public class ArrayValueReader implements ValueReader {
+class ArrayValueReader implements ValueReader {
 
-  public static final ArrayValueReader ARRAY_VALUE_READER = new ArrayValueReader();
+  static final ArrayValueReader ARRAY_VALUE_READER = new ArrayValueReader();
 
   @Override
   public boolean canRead(String s) {

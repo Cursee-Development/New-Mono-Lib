@@ -1,16 +1,16 @@
-package com.cursee.monolib.util.toml.important;
+package com.cursee.monolib.util.toml;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class Keys {
+class Keys {
   
-  public static class Key {
-    public final String name;
-    public final int index;
-    public final String path;
+  static class Key {
+    final String name;
+    final int index;
+    final String path;
 
-    public Key(String name, int index, Key next) {
+    Key(String name, int index, Key next) {
       this.name = name;
       this.index = index;
       if (next != null) {
@@ -21,7 +21,7 @@ public class Keys {
     }
   }
 
-  public static Key[] split(String key) {
+  static Key[] split(String key) {
     List<Key> splitKey = new ArrayList<Key>();
     StringBuilder current = new StringBuilder();
     boolean quoted = false;
@@ -61,7 +61,7 @@ public class Keys {
     return splitKey.toArray(new Key[0]);
   }
   
-  public static boolean isQuote(char c) {
+  static boolean isQuote(char c) {
     return c == '"' || c == '\'';
   }
 

@@ -1,11 +1,11 @@
-package com.cursee.monolib.util.toml.important;
+package com.cursee.monolib.util.toml;
 
 import java.util.*;
 import java.util.concurrent.atomic.AtomicInteger;
 
-public class Results {
+class Results {
   
-  public static class Errors {
+  static class Errors {
     
     private final StringBuilder sb = new StringBuilder();
     
@@ -32,12 +32,12 @@ public class Results {
         .append(key);
     }
     
-    public void emptyImplicitTable(String table, int line) {
+    void emptyImplicitTable(String table, int line) {
       sb.append("Invalid table definition due to empty implicit table name: ")
         .append(table);
     }
     
-    public void invalidTable(String table, int line) {
+    void invalidTable(String table, int line) {
       sb.append("Invalid table definition on line ")
         .append(line)
         .append(": ")
@@ -45,7 +45,7 @@ public class Results {
         .append("]");
     }
     
-    public void duplicateKey(String key, int line) {
+    void duplicateKey(String key, int line) {
       sb.append("Duplicate key");
       if (line > -1) {
         sb.append(" on line ")
@@ -55,7 +55,7 @@ public class Results {
         .append(key);
     }
     
-    public void invalidTextAfterIdentifier(Identifier identifier, char text, int line) {
+    void invalidTextAfterIdentifier(Identifier identifier, char text, int line) {
       sb.append("Invalid text after key ")
         .append(identifier.getName())
         .append(" on line ")
@@ -63,21 +63,21 @@ public class Results {
         .append(". Make sure to terminate the value or add a comment (#).");
     }
     
-    public void invalidKey(String key, int line) {
+    void invalidKey(String key, int line) {
       sb.append("Invalid key on line ")
         .append(line)
         .append(": ")
         .append(key);
     }
     
-    public void invalidTableArray(String tableArray, int line) {
+    void invalidTableArray(String tableArray, int line) {
       sb.append("Invalid table array definition on line ")
         .append(line)
         .append(": ")
         .append(tableArray);
     }
     
-    public void invalidValue(String key, String value, int line) {
+    void invalidValue(String key, String value, int line) {
       sb.append("Invalid value on line ")
         .append(line)
         .append(": ")
@@ -86,14 +86,14 @@ public class Results {
         .append(value);
     }
     
-    public void unterminatedKey(String key, int line) {
+    void unterminatedKey(String key, int line) {
       sb.append("Key is not followed by an equals sign on line ")
         .append(line)
         .append(": ")
         .append(key);
     }
     
-    public void unterminated(String key, String value, int line) {
+    void unterminated(String key, String value, int line) {
       sb.append("Unterminated value on line ")
         .append(line)
         .append(": ")
@@ -108,7 +108,7 @@ public class Results {
         .append(line);
     }
     
-    public boolean hasErrors() {
+    boolean hasErrors() {
       return sb.length() > 0;
     }
     
@@ -122,15 +122,15 @@ public class Results {
     }
   }
   
-  public final Errors errors = new Errors();
+  final Errors errors = new Errors();
   private final Set<String> tables = new HashSet<String>();
   private final Deque<Container> stack = new ArrayDeque<Container>();
 
-  public Results() {
+  Results() {
     stack.push(new Container.Table(""));
   }
 
-  public void addValue(String key, Object value, AtomicInteger line) {
+  void addValue(String key, Object value, AtomicInteger line) {
     Container currentTable = stack.peek();
     
     if (value instanceof Map) {
@@ -159,7 +159,7 @@ public class Results {
     }
   }
 
-  public void startTableArray(Identifier identifier, AtomicInteger line) {
+  void startTableArray(Identifier identifier, AtomicInteger line) {
     String tableName = identifier.getBareName();
     while (stack.size() > 1) {
       stack.pop();
@@ -198,7 +198,7 @@ public class Results {
     }
   }
 
-  public void startTables(Identifier id, AtomicInteger line) {
+  void startTables(Identifier id, AtomicInteger line) {
     String tableName = id.getBareName();
     
     while (stack.size() > 1) {
@@ -231,7 +231,7 @@ public class Results {
   /**
    * Warning: After this method has been called, this instance is no longer usable.
    */
-  public Map<String, Object> consume() {
+  Map<String, Object> consume() {
     Container values = stack.getLast();
     stack.clear();
 

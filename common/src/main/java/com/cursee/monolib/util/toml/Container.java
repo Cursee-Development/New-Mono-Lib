@@ -1,4 +1,4 @@
-package com.cursee.monolib.util.toml.important;
+package com.cursee.monolib.util.toml;
 
 import java.util.ArrayList;
 import java.util.HashMap;
